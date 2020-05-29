@@ -1,9 +1,13 @@
 module.exports = {
-  clearMocks: true,
-  coverageDirectory: '../coverage',
-  resetMocks: true,
-  restoreMocks: true,
+  preset: 'jest-puppeteer',
   rootDir: './src',
-  testEnvironment: 'jsdom',
-  preset: 'ts-jest'
+  transform: {
+    "^.+\\.tsx?$": "ts-jest",
+    "^.+\\.css$": "<rootDir>/config/cssTransform.js",
+  },
+  "globals": {
+    "ts-jest": {
+      "tsConfig": "tsconfig.json"
+    }
+  }
 };

@@ -3,7 +3,7 @@
     "target": "es5",
     "module": "esnext",
     "lib": [
-      "es2015",
+      "ESNext",
       "dom"
     ],
     "outDir": "./build",
@@ -16,10 +16,11 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "preserve",
+    "jsx": "react",
     "allowJs": true
   },
   "include": [
-    "src"
+    "src",
+    "jest-puppeteer.config.js"
   ]
 }
