@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/etclabscore/sig.tools-test-dapp/compare/1.0.0...1.0.1) (2020-05-29)
+
+
+### Bug Fixes
+
+* **account:** use account name from props ([8a980c2](https://github.com/etclabscore/sig.tools-test-dapp/commit/8a980c2471bac638fa948ec1f0805c27b3214396))
+
 # 1.0.0 (2020-05-29)
 
 
