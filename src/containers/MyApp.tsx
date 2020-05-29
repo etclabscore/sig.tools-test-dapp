@@ -54,6 +54,7 @@ const MyApp: React.FC = () => {
 
   useEffect(() => {
     send("ERPC", { erpc });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [erpc]);
 
   useEffect(() => {
@@ -123,7 +124,7 @@ const MyApp: React.FC = () => {
               id="connect"
               variant="contained"
               onClick={handleConnect}>
-              Connect to <b>🔐sig.tools</b>
+              Connect to <b><span role="img" aria-label="key-lock-logo">🔐</span>sig.tools</b>
             </Button>}
             <Card>
               <CardHeader title="Accounts" />

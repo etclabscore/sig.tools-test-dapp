@@ -1,11 +1,10 @@
-import { createMachine, assign, spawn, Interpreter } from "xstate";
+import { createMachine, assign } from "xstate";
 import sigToolsClient from "../lib/sigToolsClient";
 import EthereumJSONRPC from "@etclabscore/ethereum-json-rpc";
 import { numberToHex, bigIntToHex, stringToHex } from "@etclabscore/eserialize";
 import { Page } from "puppeteer";
 
 const SIG_TOOLS_URL = "https://sig.tools";
-const CONTRACT_ADDRESS = "0xAea8081026deB8d8E604Fb5b0A1E2A3f70981106";
 
 export interface IContext {
   chainId?: string;
@@ -70,8 +69,8 @@ export const rawAppMachine = {
       invoke: {
         id: "connecting.sig.tools",
         src: async (context: IContext, event: any) => {
-          const connected = await sigToolsClient.connect(SIG_TOOLS_URL);
-          const permissions = await sigToolsClient.requestPermissions({
+          await sigToolsClient.connect(SIG_TOOLS_URL);
+          await sigToolsClient.requestPermissions({
             listAccounts: {},
           });
         },
