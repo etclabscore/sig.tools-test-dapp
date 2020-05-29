@@ -1,7 +1,7 @@
 {
   "name": "@etclabscore/sig.tools-test-dapp",
   "version": "0.0.0-development",
-  "homepage": "https://etclabscore.github.io/pristine-typescript-react-material-ui/",
+  "homepage": "https://etclabscore.github.io/sig.tools-test-dapp/",
   "description": "",
   "main": "build/index.js",
   "scripts": {
