@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ObjectT84Ta8SE as IAvailableServices } from "@etclabscore/jade-service-runner-client";
-import { MuiThemeProvider, AppBar, Toolbar, Typography, IconButton, Tooltip, CssBaseline, Grid, Button, TextField, CardHeader, CardContent, Card, Box } from "@material-ui/core"; //tslint:disable-line
+import { MuiThemeProvider, AppBar, Toolbar, Typography, IconButton, Tooltip, CssBaseline, Grid, Button, CardHeader, CardContent, Card } from "@material-ui/core"; //tslint:disable-line
 import useDarkMode from "use-dark-mode";
 import Brightness3Icon from "@material-ui/icons/Brightness3";
 import WbSunnyIcon from "@material-ui/icons/WbSunny";
@@ -17,7 +17,7 @@ import useServiceRunner from "../hooks/useServiceRunner";
 import NetworkDropdown from "../components/NetworkDropdown";
 import availableServiceToNetwork from "../lib/availableServiceToNetwork";
 import { useQueryParams, StringParam } from "use-query-params";
-import { hexToBigInt, hexToNumber } from "@etclabscore/eserialize";
+import { hexToNumber } from "@etclabscore/eserialize";
 import Account from "../components/Account";
 
 const MyApp: React.FC = () => {
@@ -25,17 +25,14 @@ const MyApp: React.FC = () => {
   const { t } = useTranslation();
   const theme = darkMode.value ? darkTheme : lightTheme;
   const [selectedNetwork, setSelectedNetworkState] = useState();
-  const [serviceRunner, serviceRunnerUrl, setServiceRunnerUrl, availableServices]: [ServiceRunner | undefined, string, any, IAvailableServices[]] = useServiceRunner(process.env.REACT_APP_SERVICE_RUNNER_URL || "https://services.jade.builders"); //tslint:disable-line
+  const [serviceRunner, serviceRunnerUrl,, availableServices]: [ServiceRunner | undefined, string, any, IAvailableServices[]] = useServiceRunner(process.env.REACT_APP_SERVICE_RUNNER_URL || "https://services.jade.builders"); //tslint:disable-line
   const [erpc, setCoreGethUrlOverride] = useCoreGeth(serviceRunner, serviceRunnerUrl, "1.11.2", "mainnet");
-  const [state, send, myStateMachineService]: [any, any, any] = useMachine<IContext, any>(appMachine, { devTools: true }); //tslint:disable-line
+  const [state, send]: [any, any, any] = useMachine<IContext, any>(appMachine, { devTools: true }); //tslint:disable-line
   const [networks, setNetworks] = useState<any[]>([]);
-  const [query, setQuery] = useQueryParams({
+  const [query] = useQueryParams({
     network: StringParam,
     rpcUrl: StringParam,
   });
-  const handleSetEtherValue = (e: any) => {
-    send("SET_ETHER", e.target.value);
-  };
 
   const setSelectedNetwork = async (network: any) => {
     if (serviceRunner) {
@@ -89,14 +86,6 @@ const MyApp: React.FC = () => {
 
   const handleConnect = () => {
     send("CONNECT");
-  };
-
-  const handleWrap = () => {
-    send("WRAP");
-  };
-
-  const handleUnwrap = () => {
-    send("UNWRAP");
   };
 
   return (
@@ -178,16 +167,6 @@ const MyApp: React.FC = () => {
               </pre>
             </Card>
           </Grid>
-          {/* <TextField
-            variant="outlined"
-            label="Amount (in ETC)"
-            value={state.context.etherValue}
-            onChange={handleSetEtherValue}
-          />
-          <Grid container justify="center" alignItems="center">
-            <Button variant="contained" color="primary" onClick={handleWrap}>Wrap</Button>
-            <Button variant="contained" color="secondary" onClick={handleUnwrap}>Unwrap</Button>
-          </Grid> */}
         </Grid>
       </div>
     </MuiThemeProvider >
