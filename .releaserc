@@ -6,7 +6,7 @@
     "@semantic-release/release-notes-generator",
     "@semantic-release/changelog",
     "@semantic-release/github",
-    "@semantic-release/git",
+    "@semantic-release/git"
   ],
   "verifyConditions": [
     "@semantic-release/changelog",
@@ -20,7 +20,8 @@
       "path": "@qiwi/semantic-release-gh-pages-plugin",
       "msg": "github pages release",
       "src": "build/",
-      "branch": "gh-pages"
+      "branch": "gh-pages",
+      "pullTagsBranch": ""
     }
   ],
   "success": [
