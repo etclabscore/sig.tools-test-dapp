@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/sig.tools-test-dapp/static/css/main.8455fdcf.chunk.css",
+    "main.js": "/sig.tools-test-dapp/static/js/main.309b0ae8.chunk.js",
+    "main.js.map": "/sig.tools-test-dapp/static/js/main.309b0ae8.chunk.js.map",
+    "runtime-main.js": "/sig.tools-test-dapp/static/js/runtime-main.1544cf9a.js",
+    "runtime-main.js.map": "/sig.tools-test-dapp/static/js/runtime-main.1544cf9a.js.map",
+    "static/js/2.90efd1f9.chunk.js": "/sig.tools-test-dapp/static/js/2.90efd1f9.chunk.js",
+    "static/js/2.90efd1f9.chunk.js.map": "/sig.tools-test-dapp/static/js/2.90efd1f9.chunk.js.map",
+    "index.html": "/sig.tools-test-dapp/index.html",
+    "precache-manifest.df4ab8b7665a3a2aa5387aeec0ea8a6d.js": "/sig.tools-test-dapp/precache-manifest.df4ab8b7665a3a2aa5387aeec0ea8a6d.js",
+    "service-worker.js": "/sig.tools-test-dapp/service-worker.js",
+    "static/css/main.8455fdcf.chunk.css.map": "/sig.tools-test-dapp/static/css/main.8455fdcf.chunk.css.map",
+    "static/js/2.90efd1f9.chunk.js.LICENSE.txt": "/sig.tools-test-dapp/static/js/2.90efd1f9.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1544cf9a.js",
+    "static/js/2.90efd1f9.chunk.js",
+    "static/css/main.8455fdcf.chunk.css",
+    "static/js/main.309b0ae8.chunk.js"
+  ]
+}
