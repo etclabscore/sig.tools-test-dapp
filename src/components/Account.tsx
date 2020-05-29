@@ -28,7 +28,7 @@ const Account: React.FC<IProps> = (props) => {
 
   return (
     <Card>
-      <CardHeader title={Account.name} />
+      <CardHeader title={props.account.name} />
       <CardContent>
         <Typography variant="body1">{props.account?.address}</Typography>
         <Typography variant="body1">{hexToBigInt(props.account?.balance ?? "0x0").toString()} ETC</Typography>
