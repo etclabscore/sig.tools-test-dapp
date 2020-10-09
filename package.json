@@ -26,18 +26,6 @@
     "tslint": "^5.17.0",
     "typescript": "^3.9.2"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
   "dependencies": {
     "@etclabscore/eserialize": "^1.1.2",
     "@etclabscore/ethereum-json-rpc": "^1.3.6",
@@ -53,8 +41,21 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-i18next": "^10.13.1",
+    "sig.tools-sdk": "^1.3.5",
     "use-dark-mode": "^2.3.1",
     "use-query-params": "^1.1.3",
     "xstate": "^4.9.1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

@@ -15,7 +15,6 @@ const testApplicationMachine = applicationMachine;
 const applicationModel = createModel(testApplicationMachine, {
   events: {
     "CONNECT": async (page: Page) => {
-      await page.waitFor("#connect", { visible: true });
       await page.click("#connect");
       const pages = await browser.pages();
       const popup = pages[pages.length - 1];
@@ -52,6 +51,7 @@ const applicationModel = createModel(testApplicationMachine, {
         const pages = await browser.pages();
         const popup = pages[pages.length - 1];
         // try {
+        await popup.click("#request-permissions > div > div:nth-child(2) > ul > li:nth-child(1) > div.MuiButtonBase-root.MuiListItem-root.MuiListItem-gutters.MuiListItem-button.MuiListItem-secondaryAction > div > p", {delay: 1000}); //tslint:disable-line
         await popup.click("#request-permissions #submit", { delay: 1000 });
         await popup.waitForSelector("#success", { visible: true, timeout: 5000 });
         await popup.waitFor(3000);
@@ -85,11 +85,12 @@ const applicationModel = createModel(testApplicationMachine, {
 beforeAll(async (done) => {
   await page.goto("http://localhost:3001");
   await page.click("#connect");
-  await page.waitFor(1000);
   const pages = await browser.pages();
   const popup = pages[pages.length - 1];
   await popup.waitFor("#onboarding");
-  await popup.type("#root_newAccount_passphrase", "1");
+  await popup.type("#root_newAccount_name", "1");
+  await popup.type("input[type='password']", "1");
+  await popup.type("#onboarding > div > form > div > div > div > div > div.MuiGrid-root.jss3.MuiGrid-container.MuiGrid-spacing-xs-2 > div:nth-child(2) > div > div > div:nth-child(5) > div > input", "1"); //tslint:disable-line
   await popup.click("#onboarding #submit");
   await popup.waitFor("#success", { visible: true });
   await popup.close();

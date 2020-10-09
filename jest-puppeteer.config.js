@@ -1,8 +1,8 @@
 module.exports = {
   launch: {
     args: ["--disable-dev-shm-usage"],
-    headless: true,
-    slowMo: 50,
+    headless: false,
+    slowMo: 500,
   },
   server: {
     command: `npm start`,

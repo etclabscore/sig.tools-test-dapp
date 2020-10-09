@@ -5,9 +5,9 @@ module.exports = {
     "^.+\\.tsx?$": "ts-jest",
     "^.+\\.css$": "<rootDir>/config/cssTransform.js",
   },
-  "globals": {
+  globals: {
     "ts-jest": {
-      "tsConfig": "tsconfig.json"
+      tsConfig: "tsconfig.json"
     }
   }
 };

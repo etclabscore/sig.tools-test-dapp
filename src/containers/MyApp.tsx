@@ -105,7 +105,7 @@ const MyApp: React.FC = () => {
                 selectedNetwork={selectedNetwork}
               />
               <LanguageMenu />
-              <Tooltip title={t("Toggle Dark Mode")}>
+              <Tooltip title={t("Toggle Dark Mode") as string}>
                 <IconButton onClick={darkMode.toggle}>
                   {darkMode.value ? <Brightness3Icon /> : <WbSunnyIcon />}
                 </IconButton>
@@ -120,12 +120,12 @@ const MyApp: React.FC = () => {
         <Grid container alignContent="center" justify="space-around" direction="row">
           <Grid>
             {state.matches("connecting") && <Button disabled>Connecting...</Button>}
-            {<Button
+            <Button
               id="connect"
               variant="contained"
               onClick={handleConnect}>
               Connect to <b><span role="img" aria-label="key-lock-logo">🔐</span>sig.tools</b>
-            </Button>}
+            </Button>
             <Card>
               <CardHeader title="Accounts" />
               <CardContent>
