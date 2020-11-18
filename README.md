@@ -1,12 +1,20 @@
 # Chain Code Tools
 
-A tool to setup chain code deployment pipelines & run them.
+A tool to setup chain code deployment workflows & run them.
 
-The tool has 2 main 'modes'. A builder mode which allows you to construct chain code deployment pipelines, and a 'commander' mode which allows you run and administrate running pipelines. 
+The tool has 2 main 'modes'. A builder mode which allows you to construct chain code deployment workflows & their steps, and a 'commander' mode which allows you administrate and run workflows. 
 
 ### BUILDER MODE
 
-Builder mode allows the user to construct chain code deployment pipelines. These are sequences of steps to perform, along with how they recieve their inputs, and where to send their outputs. Builder mode will allow you to construct complicated chain code deploys, for example, deployments which have dependencies on eachothers' results. Builder mode also allows you to provide a standardized interface description (in ABI format), allowing easy use of the code later.
+Builder mode allows the user to construct chain code deployment workflows. These are sequences of steps to perform, along with how they recieve their inputs, and where to send their outputs. 
+
+Builder mode allows you to construct complicated chain code deploys. For example, deployments which have dependencies on eachothers' results. 
+
+Builder mode also allows you to provide a standardized interface description (in ABI format), allowing easy use of the code later.
+
+#### Using builder mode
+
+> As a chain code developer, I want to describe the deployment of one part of my project.
 
 - define code fragment deploy:
   - enter requirements:
@@ -18,6 +26,8 @@ Builder mode allows the user to construct chain code deployment pipelines. These
     - allows mapping of context / environment ontop constructor args
   - define what to output from this code fragment 
     - given transaction receipt, block the deploy is included in, etc. 
+
+> As a chain code developer, I want to describe how deployments of my projects fragments are strung together to make a complete deployment. 
 
 - define chain code workflows
   - visually construct a pipeline of code fragment deploys, connecting their inputs and outputs.
