@@ -2,9 +2,20 @@
 
 A tool to setup chain code deployment workflows & run them.
 
+
 The tool has 2 main 'modes'. A builder mode which allows you to construct chain code deployment workflows & their steps, and a 'commander' mode which allows you administrate and run workflows. 
 
-### BUILDER MODE
+## Definitions
+
+### What is chain code? 
+
+It's the EVM byte code that is written to an address on chain which provides some programmatic functionality to its users.
+
+### What is a deployment workflow? 
+
+It's a sequence of steps and the inputs & outputs for each step which yields a collection of deployed chain code. It is the minimally-complete set of steps required for an individual project or component of a project.
+
+## BUILDER MODE
 
 Builder mode allows the user to construct chain code deployment workflows. These are sequences of steps to perform, along with how they recieve their inputs, and where to send their outputs. 
 
@@ -12,7 +23,7 @@ Builder mode allows you to construct complicated chain code deploys. For example
 
 Builder mode also allows you to provide a standardized interface description (in ABI format), allowing easy use of the code later.
 
-#### Using builder mode
+### Using builder mode
 
 > As a chain code developer, I want to describe the deployment of one fragment of my project.
 
@@ -34,17 +45,27 @@ Builder mode also allows you to provide a standardized interface description (in
     - able to add in 'hold' steps which require human approval before continuing.
       - configure what to display at this phase - provided outputs and inputs of all code fragment deploys.
 
-### COMMANDER MODE
+## COMMANDER MODE
 
-Commander mode allows you to run pipelines that you have created / imported. It shows you what pipelines you can run, and allows you to create contexts for a given pipeline. Once a context has been assigned to a pipeline, Commander mode lets you run that pipeline. Commander mode displays a list of running pipelines, and previously run pipelines. It allows you to inspect the pipeline, displaying successes and failures in a visually appealing way, along with debugging logs for each step of each pipeline. 
+Commander mode allows you to run workflows that you have created / imported. It shows you what workflows you can run, and allows you to create contexts for a given workflow. Once a context has been assigned to a workflow, Commander mode lets you run that pipeline. Commander mode displays a list of running pipelines, and previously run pipelines. It allows you to inspect the pipeline, displaying successes and failures in a visually appealing way, along with debugging logs for each step of each pipeline. 
+
+### Using commander mode
+
+> As a project administrator, I would like to set the deployment address, configure the network to use, and deploy my project's code.
 
 - create deployment contexts
   - storing address to use for deployment, what network to use, environment specific data, etc.
 - provide a dashboard of runnable workflows.
   - run a workflow -> starts signing and sending tx's w/ sig tools & configured service runner
+  
+> As a project administrator, I would like to view the workflows I have run in the past, and inspect their logs
 - provide a history of workflows run
+
+> As a project user, I would like to view important on-chain metrics to my project
 - provide a dashboard to explore previously successfully run deploys
   - configure what is displayed
+  
+> As a project user, I would like to be able to download generated code for using the chain code
 - **export clients for multiple languages
 
 ### Contributing
