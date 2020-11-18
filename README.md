@@ -37,6 +37,8 @@ Builder mode also allows you to provide a standardized interface description (in
     - allows mapping of context / environment ontop constructor args
   - define what to output from this code fragment 
     - given transaction receipt, block the deploy is included in, etc. 
+    
+***
 
 > As a chain code developer, I want to describe how deployments of my projects fragments are strung together to make a complete deployment. 
 
@@ -57,16 +59,23 @@ Commander mode allows you to run workflows that you have created / imported. It 
   - storing address to use for deployment, what network to use, environment specific data, etc.
 - provide a dashboard of runnable workflows.
   - run a workflow -> starts signing and sending tx's w/ sig tools & configured service runner
-  
+
+***
+
 > As a project administrator, I would like to view the workflows I have run in the past, and inspect their logs
 - provide a history of workflows run
+  
+#### stretch goals
 
 > As a project user, I would like to view important on-chain metrics to my project
 - provide a dashboard to explore previously successfully run deploys
   - configure what is displayed
-  
+
+***
+
 > As a project user, I would like to be able to download generated code for using the chain code
-- **export clients for multiple languages
+
+- export clients for multiple languages
 
 ### Contributing
 
