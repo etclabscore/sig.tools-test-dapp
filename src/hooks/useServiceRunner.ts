@@ -1,14 +1,12 @@
-import JadeServiceRunner, { ObjectT84Ta8SE as IAvailableServices } from "@etclabscore/jade-service-runner-client";
+import JadeServiceRunner, { ObjectOfStringDoaGddGAStringDoaGddGAUnorderedSetOfObjectOfStringDoaGddGAStringDoaGddGAKieCSt44UIuKSje3U7AKQies as IAvailableServices } from "@etclabscore/jade-service-runner-client";
 import React, { Dispatch, useEffect } from "react";
-import { useQueryParam, StringParam } from "use-query-params";
 
 function useServiceRunner(defaultUrl: string): [JadeServiceRunner | undefined, string, Dispatch<string>, IAvailableServices[]] { //tslint:disable-line
   const [url, setUrl] = React.useState(defaultUrl);
   const [serviceRunner, setServiceRunner] = React.useState<JadeServiceRunner | undefined>();
   const [availableServices, setAvailableServices] = React.useState<IAvailableServices[]>([]);
-  const [rpcUrlQuery] = useQueryParam("url", StringParam);
   React.useEffect(() => {
-    if (process.env.REACT_APP_ETH_RPC_URL || rpcUrlQuery) {
+    if (process.env.REACT_APP_ETH_RPC_URL) {
       return;
     }
     if (!url) {
