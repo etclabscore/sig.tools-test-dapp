@@ -14,7 +14,7 @@ Builder mode also allows you to provide a standardized interface description (in
 
 #### Using builder mode
 
-> As a chain code developer, I want to describe the deployment of one part of my project.
+> As a chain code developer, I want to describe the deployment of one fragment of my project.
 
 - define code fragment deploy:
   - enter requirements:
