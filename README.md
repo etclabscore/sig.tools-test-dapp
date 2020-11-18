@@ -25,6 +25,8 @@ Builder mode also allows you to provide a standardized interface description (in
 
 ### Using builder mode
 
+***
+
 > As a chain code developer, I want to describe the deployment of one fragment of my project.
 
 - define code fragment deploy:
@@ -47,11 +49,15 @@ Builder mode also allows you to provide a standardized interface description (in
     - able to add in 'hold' steps which require human approval before continuing.
       - configure what to display at this phase - provided outputs and inputs of all code fragment deploys.
 
+***
+
 ## COMMANDER MODE
 
 Commander mode allows you to run workflows that you have created / imported. It shows you what workflows you can run, and allows you to create contexts for a given workflow. Once a context has been assigned to a workflow, Commander mode lets you run that pipeline. Commander mode displays a list of running pipelines, and previously run pipelines. It allows you to inspect the pipeline, displaying successes and failures in a visually appealing way, along with debugging logs for each step of each pipeline. 
 
 ### Using commander mode
+
+***
 
 > As a project administrator, I would like to set the deployment address, configure the network to use, and deploy my project's code.
 
@@ -64,8 +70,12 @@ Commander mode allows you to run workflows that you have created / imported. It 
 
 > As a project administrator, I would like to view the workflows I have run in the past, and inspect their logs
 - provide a history of workflows run
+
+***
   
 #### stretch goals
+
+***
 
 > As a project user, I would like to view important on-chain metrics to my project
 - provide a dashboard to explore previously successfully run deploys
@@ -76,6 +86,8 @@ Commander mode allows you to run workflows that you have created / imported. It 
 > As a project user, I would like to be able to download generated code for using the chain code
 
 - export clients for multiple languages
+
+***
 
 ### Contributing
 
