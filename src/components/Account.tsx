@@ -32,9 +32,9 @@ const Account: React.FC<IProps> = (props) => {
       <CardContent>
         <Typography variant="body1">{props.account?.address}</Typography>
         <Typography variant="body1">{hexToBigInt(props.account?.balance ?? "0x0").toString()} ETC</Typography>
-        <Button onClick={handleSend}>Send 1 Ether</Button>
-        <Button onClick={handleSign}>Sign "Hello"</Button>
-        <Button onClick={handleSignTypedData}>SignTypedData</Button>
+        <span id="send"><Button onClick={handleSend}>Send 1 Ether</Button></span>
+        <span id="sign"><Button className="sign" onClick={handleSign}>Sign "Hello"</Button></span>
+        <span id="signtypeddata"><Button className="signtypeddata" onClick={handleSignTypedData}>SignTypedData</Button></span>
       </CardContent>
     </Card>
   );

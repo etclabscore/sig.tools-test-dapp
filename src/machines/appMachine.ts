@@ -58,12 +58,16 @@ export const rawAppMachine = {
   },
   states: {
     idle: {
-
+      meta: {
+        test: async (page: Page) => {
+          return true;
+        },
+      }
     },
     connecting: {
       meta: {
         test: async (page: Page) => {
-          await page.waitFor("#connecting");
+          await page.waitFor('[data-testid="connecting"]');
         },
       },
       invoke: {
@@ -81,6 +85,11 @@ export const rawAppMachine = {
       },
     },
     fetchingAccounts: {
+      meta: {
+        test: async (page: Page) => {
+          return true;
+        },
+      },
       invoke: {
         id: "fetchingAccounts.sig.tools",
         src: async (context: IContext, event: any) => {
@@ -106,6 +115,11 @@ export const rawAppMachine = {
       },
     },
     fetchingChainId: {
+      meta: {
+        test: async (page: Page) => {
+          return true;
+        },
+      },
       invoke: {
         id: "fetchingChainId.sig.tools",
         src: async (context: IContext, event: any) => {
@@ -119,14 +133,12 @@ export const rawAppMachine = {
         onError: "idle",
       },
     },
-    connected: {
+    signTypedData: {
       meta: {
         test: async (page: Page) => {
-          await page.waitFor("#connected");
+          return true;
         },
       },
-    },
-    signTypedData: {
       invoke: {
         id: "signTypedData.sig.tools",
         src: async (context: IContext, event: any) => {
@@ -207,6 +219,11 @@ export const rawAppMachine = {
       },
     },
     signMessage: {
+      meta: {
+        test: async (page: Page) => {
+          return true;
+        },
+      },
       invoke: {
         id: "signMessage.sig.tools",
         src: async (context: IContext, event: any) => {
@@ -223,6 +240,11 @@ export const rawAppMachine = {
       },
     },
     sendTransaction: {
+      meta: {
+        test: async (page: Page) => {
+          return true;
+        },
+      },
       invoke: {
         id: "sendTransaction.sig.tools",
         src: async (context: IContext, event: any) => {

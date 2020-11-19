@@ -7,7 +7,7 @@
   "scripts": {
     "start": "BROWSER=none PORT=3001 react-scripts start",
     "build": "react-scripts build",
-    "lint": "tslint --fix -p .",
+    "lint": "eslint -c .eslintrc.json .",
     "test": "npm run lint && jest"
   },
   "author": "",
@@ -17,13 +17,15 @@
     "@types/jest": "^24.0.13",
     "@types/puppeteer": "^3.0.0",
     "@types/react-dom": "^16.8.4",
+    "@typescript-eslint/eslint-plugin": "^4.8.1",
+    "@typescript-eslint/parser": "^4.8.1",
+    "eslint": "^7.13.0",
     "jest": "^26.6.3",
     "jest-puppeteer": "^4.4.0",
     "puppeteer": "^3.1.0",
     "react-scripts": "^4.0.0",
     "ts-jest": "^26.4.4",
     "ts-jest-puppeteer": "0.0.5",
-    "tslint": "^5.17.0",
     "typescript": "^3.9.7"
   },
   "browserslist": {

@@ -25,7 +25,7 @@ const MyApp: React.FC = () => {
   const theme = darkMode.value ? darkTheme : lightTheme;
   const [selectedNetwork, setSelectedNetworkState] = useState();
   const [serviceRunner, serviceRunnerUrl, , availableServices]: [ServiceRunner | undefined, string, any, IAvailableServices[]] = useServiceRunner(process.env.REACT_APP_SERVICE_RUNNER_URL || "https://services.jade.builders"); //tslint:disable-line
-  const [erpc, setCoreGethUrlOverride] = useCoreGeth(serviceRunner, serviceRunnerUrl, "1.11.2", "mainnet");
+  const [erpc, setCoreGethUrlOverride] = useCoreGeth(serviceRunner, serviceRunnerUrl, "1.11.17", "mainnet");
   const [state, send]: [any, any, any] = useMachine<IContext, any>(appMachine, { devTools: true }); //tslint:disable-line
   const [networks, setNetworks] = useState<any[]>([]);
 
@@ -103,10 +103,10 @@ const MyApp: React.FC = () => {
       </AppBar>
       <div>
         <CssBaseline />
-        <div id={state.value} />
+        <div id={state.value} data-testid={state.value}/>
         <Grid container alignContent="center" justify="space-around" direction="row">
           <Grid>
-            {state.matches("connecting") && <Button disabled>Connecting...</Button>}
+            {state.matches("connecting") && <Button data-testid="connecting">Connecting...</Button>}
             {<Button
               id="connect"
               variant="contained"
