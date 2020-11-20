@@ -1,3 +1,12 @@
+## [1.0.2](https://github.com/etclabscore/sig.tools-test-dapp/compare/1.0.1...1.0.2) (2020-11-20)
+
+
+### Bug Fixes
+
+* tests passing ([2b07ab4](https://github.com/etclabscore/sig.tools-test-dapp/commit/2b07ab405bc8ac14483975c377461d9ff3129156))
+* update deps to latest ([df7e03f](https://github.com/etclabscore/sig.tools-test-dapp/commit/df7e03ffd5a34f1ed5441a00d31fdb825b22a029))
+* **eslint:** disable some rules for now ([a165d23](https://github.com/etclabscore/sig.tools-test-dapp/commit/a165d23d6ab354d211309856067e2d37abf46cd1))
+
 ## [1.0.1](https://github.com/etclabscore/sig.tools-test-dapp/compare/1.0.0...1.0.1) (2020-05-29)
 
 
