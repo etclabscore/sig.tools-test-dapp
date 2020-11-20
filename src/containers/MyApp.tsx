@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ObjectT84Ta8SE as IAvailableServices } from "@etclabscore/jade-service-runner-client";
+import { ObjectOfStringDoaGddGAStringDoaGddGAUnorderedSetOfObjectOfStringDoaGddGAStringDoaGddGAKieCSt44UIuKSje3U7AKQies as IAvailableServices } from "@etclabscore/jade-service-runner-client";
 import { MuiThemeProvider, AppBar, Toolbar, Typography, IconButton, Tooltip, CssBaseline, Grid, Button, CardHeader, CardContent, Card } from "@material-ui/core"; //tslint:disable-line
 import useDarkMode from "use-dark-mode";
 import Brightness3Icon from "@material-ui/icons/Brightness3";
@@ -16,7 +16,6 @@ import ServiceRunner from "@etclabscore/jade-service-runner-client";
 import useServiceRunner from "../hooks/useServiceRunner";
 import NetworkDropdown from "../components/NetworkDropdown";
 import availableServiceToNetwork from "../lib/availableServiceToNetwork";
-import { useQueryParams, StringParam } from "use-query-params";
 import { hexToNumber } from "@etclabscore/eserialize";
 import Account from "../components/Account";
 
@@ -25,14 +24,10 @@ const MyApp: React.FC = () => {
   const { t } = useTranslation();
   const theme = darkMode.value ? darkTheme : lightTheme;
   const [selectedNetwork, setSelectedNetworkState] = useState();
-  const [serviceRunner, serviceRunnerUrl,, availableServices]: [ServiceRunner | undefined, string, any, IAvailableServices[]] = useServiceRunner(process.env.REACT_APP_SERVICE_RUNNER_URL || "https://services.jade.builders"); //tslint:disable-line
-  const [erpc, setCoreGethUrlOverride] = useCoreGeth(serviceRunner, serviceRunnerUrl, "1.11.2", "mainnet");
+  const [serviceRunner, serviceRunnerUrl, , availableServices]: [ServiceRunner | undefined, string, any, IAvailableServices[]] = useServiceRunner(process.env.REACT_APP_SERVICE_RUNNER_URL || "https://services.jade.builders"); //tslint:disable-line
+  const [erpc, setCoreGethUrlOverride] = useCoreGeth(serviceRunner, serviceRunnerUrl, "1.11.17", "mainnet");
   const [state, send]: [any, any, any] = useMachine<IContext, any>(appMachine, { devTools: true }); //tslint:disable-line
   const [networks, setNetworks] = useState<any[]>([]);
-  const [query] = useQueryParams({
-    network: StringParam,
-    rpcUrl: StringParam,
-  });
 
   const setSelectedNetwork = async (network: any) => {
     if (serviceRunner) {
@@ -61,17 +56,9 @@ const MyApp: React.FC = () => {
     if (!networks || networks.length === 0) {
       return;
     }
-    if (query.rpcUrl) {
-      return;
-    }
-    if (networks && query.network) {
-      const foundNetwork = networks.find((net) => net.name === query.network);
-      setSelectedNetworkState(foundNetwork);
-    } else {
-      setSelectedNetworkState(networks[0]);
-    }
+    setSelectedNetworkState(networks[0]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [networks, query.network]);
+  }, [networks]);
 
   const handleSignTypedData = (account: any) => {
     send("SIGN_TYPED_DATA", { ...account });
@@ -105,7 +92,7 @@ const MyApp: React.FC = () => {
                 selectedNetwork={selectedNetwork}
               />
               <LanguageMenu />
-              <Tooltip title={t("Toggle Dark Mode")}>
+              <Tooltip title={t("Toggle Dark Mode") as string}>
                 <IconButton onClick={darkMode.toggle}>
                   {darkMode.value ? <Brightness3Icon /> : <WbSunnyIcon />}
                 </IconButton>
@@ -116,10 +103,10 @@ const MyApp: React.FC = () => {
       </AppBar>
       <div>
         <CssBaseline />
-        <div id={state.value} />
+        <div id={state.value} data-testid={state.value}/>
         <Grid container alignContent="center" justify="space-around" direction="row">
           <Grid>
-            {state.matches("connecting") && <Button disabled>Connecting...</Button>}
+            {state.matches("connecting") && <Button data-testid="connecting">Connecting...</Button>}
             {<Button
               id="connect"
               variant="contained"

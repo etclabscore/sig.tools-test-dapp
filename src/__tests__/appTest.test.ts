@@ -1,15 +1,10 @@
-import React from "react";
 import { Machine } from "xstate";
 import { createModel } from "@xstate/test";
 import { IContext, rawAppMachine } from "../machines/appMachine";
-import MyApp from "../containers/MyApp";
-import { render, fireEvent, cleanup } from "@testing-library/react";
 import { TestPlan } from "@xstate/test/lib/types";
-import { act } from "react-dom/test-utils";
 import { Page } from "puppeteer";
-import EthereumJSONRPC from "@etclabscore/ethereum-json-rpc";
 jest.setTimeout(95000);
-page.setDefaultTimeout(60000);
+page.setDefaultTimeout(95000);
 const applicationMachine = Machine<any, any, any>(rawAppMachine);
 const testApplicationMachine = applicationMachine;
 const applicationModel = createModel(testApplicationMachine, {
@@ -19,16 +14,15 @@ const applicationModel = createModel(testApplicationMachine, {
       await page.click("#connect");
       const pages = await browser.pages();
       const popup = pages[pages.length - 1];
-      await popup.waitFor(5000);
-      await popup.waitForSelector("#request-permissions #submit", {
+      await popup.waitFor(1000);
+      await popup.waitFor("ul li:nth-child(1) > div");
+      await popup.click("ul li:nth-child(1) > div");
+      await popup.waitForSelector("#submit", {
         visible: true,
-        timeout: 30000,
+        timeout: 1000,
       });
     },
     "done.invoke.fetchingChainId.sig.tools": {
-      exec: async (page: Page) => {
-        await page.waitFor(3000);
-      },
       cases: [
         {
           type: "done.invoke.fetchingChainId.sig.tools",
@@ -51,13 +45,9 @@ const applicationModel = createModel(testApplicationMachine, {
       exec: async (page: Page) => {
         const pages = await browser.pages();
         const popup = pages[pages.length - 1];
-        // try {
-        await popup.click("#request-permissions #submit", { delay: 1000 });
-        await popup.waitForSelector("#success", { visible: true, timeout: 5000 });
-        await popup.waitFor(3000);
-        // } catch (e) {
-        // do nothing
-        // }
+        await popup.waitFor("#submit", { timeout: 5000 });
+        await popup.click("#submit");
+        await popup.waitFor("#success", { visible: true, timeout: 5000 });
       },
       cases: [
         {
@@ -68,10 +58,52 @@ const applicationModel = createModel(testApplicationMachine, {
         },
       ],
     },
+    "error.platform.fetchingAccounts.sig.tools": {
+      cases: [
+        {
+          type: "error.platform.fetchingAccounts.sig.tools",
+          data: {
+            code: 32009,
+            message: "Some error",
+          },
+        },
+      ],
+    },
+    "done.invoke.fetchingAccounts.sig.tools": {
+      cases: [
+        {
+          type: "done.invoke.fetchingAccounts.sig.tools",
+          data: [
+            { name: "foo", description: "bar", address: "0x012341240193904589103940494013491358135013499" },
+          ],
+        },
+      ],
+    },
+    "SEND": {
+      cases: [
+        {
+          type: "SEND",
+          data: "0xdeadbeef",
+        },
+      ],
+    },
+    "SIGN": {
+      cases: [
+        {
+          type: "SIGN",
+          data: "0xdeadbeef",
+        },
+      ],
+    },
+    "SIGN_TYPED_DATA": {
+      cases: [
+        {
+          type: "SIGN_TYPED_DATA",
+          data: "0xdeadbeef",
+        },
+      ],
+    },
     "ERPC": {
-      exec: async (page: Page) => {
-        await page.waitFor(3000);
-      },
       cases: [
         {
           type: "ERPC",
@@ -79,36 +111,39 @@ const applicationModel = createModel(testApplicationMachine, {
         },
       ],
     },
-  } as any,
+  } as any, //eslint-disable-line
 });
 
-beforeAll(async (done) => {
+beforeAll(async () => {
   await page.goto("http://localhost:3001");
+  await page.waitFor("#connect", { visible: true });
   await page.click("#connect");
   await page.waitFor(1000);
   const pages = await browser.pages();
   const popup = pages[pages.length - 1];
   await popup.waitFor("#onboarding");
-  await popup.type("#root_newAccount_passphrase", "1");
+  await page.waitFor(1000);
+  await popup.type("#root_newAccount_name", "1");
+  await popup.type("[type=password]", "1");
+  const confirmPasswordSelector = "div:nth-child(5) > div > input";
+  await popup.type(confirmPasswordSelector, "1");
   await popup.click("#onboarding #submit");
   await popup.waitFor("#success", { visible: true });
   await popup.close();
-  done();
-}, 60000);
+});
 
 describe("sig app", () => {
   const testPlans = applicationModel.getShortestPathPlans();
   testPlans.forEach((plan: TestPlan<any, IContext>) => {
-    describe(plan.description, () => {
+    describe(plan.description, () => { //eslint-disable-line
       plan.paths.forEach((path) => {
-        it(path.description, async () => {
-          await page.goto("http://localhost:3001");
+        it(path.description, async () => { //eslint-disable-line
           return path.test(page);
         });
       });
     });
   });
-  // it("should have full coverage", () => {
-  //   return applicationModel.testCoverage();
-  // });
+  it("should have full coverage", () => {
+    return applicationModel.testCoverage();
+  });
 });

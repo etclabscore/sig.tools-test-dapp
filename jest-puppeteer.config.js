@@ -1,12 +1,11 @@
 module.exports = {
   launch: {
-    args: ["--disable-dev-shm-usage"],
     headless: true,
-    slowMo: 50,
+    slowMo: 100,
   },
   server: {
     command: `npm start`,
-    launchTimeout: 30000,
+    launchTimeout: 30000000,
     port: 3001,
   },
 };

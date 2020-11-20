@@ -25,7 +25,7 @@ const sigToolsAuth = {
           address,
           chainId,
         ],
-      } as any,
+      },
     });
     return result;
   },
@@ -42,7 +42,7 @@ const sigToolsAuth = {
           address,
           chainId,
         ],
-      } as any,
+      },
     });
     return result;
   },
@@ -58,7 +58,7 @@ const sigToolsAuth = {
           transaction,
           chainId,
         ],
-      } as any,
+      },
     });
     return result;
   },
@@ -71,7 +71,7 @@ const sigToolsAuth = {
         jsonrpc: "2.0",
         method: "requestPermissions",
         params: [permissions],
-      } as any,
+      },
     });
     return successPermissions;
   },
@@ -84,7 +84,7 @@ const sigToolsAuth = {
         jsonrpc: "2.0",
         method: "listAccounts",
         params: [],
-      } as any,
+      },
     });
     return accounts;
   },
