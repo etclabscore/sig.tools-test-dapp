@@ -1,4 +1,4 @@
-export default {
+const kr = {
   // Moment integration
   "Date": "{{date, date}}",
   // App Bar
@@ -8,3 +8,4 @@ export default {
   "Configuration": "구성",
   "Back": "뒤로",
 };
+export default kr;

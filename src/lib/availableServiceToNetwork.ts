@@ -1,6 +1,6 @@
 import {
-  ObjectT84Ta8SE as IAvailableServices,
-  ObjectDBzoJtf4 as IEnvironment,
+  ObjectOfStringDoaGddGAStringDoaGddGAUnorderedSetOfObjectOfStringDoaGddGAStringDoaGddGAKieCSt44UIuKSje3U7AKQies as IAvailableServices,
+  ObjectOfStringDoaGddGAStringDoaGddGAKieCSt44 as IEnvironment,
 } from "@etclabscore/jade-service-runner-client";
 
 interface INetwork {

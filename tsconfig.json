@@ -6,6 +6,7 @@
       "ESNext",
       "dom"
     ],
+    "noFallthroughCasesInSwitch": true,
     "outDir": "./build",
     "strict": true,
     "esModuleInterop": true,
